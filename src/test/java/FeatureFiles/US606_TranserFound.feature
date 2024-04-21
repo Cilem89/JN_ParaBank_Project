@@ -3,6 +3,7 @@ Feature: Money Transfer Between Accounts
 
   Background:
     Given Navigate to the Website Parabank
+    When Enter customer Data and click on the Register button
     Then Enter username and password and click on the login button
     When User should be successfully logged in
 

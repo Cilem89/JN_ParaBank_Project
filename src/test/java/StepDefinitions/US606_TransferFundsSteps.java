@@ -13,7 +13,7 @@ import Utilities.GWD;
 
 import java.util.List;
 
-public class TransferFundsSteps extends Parent {
+public class US606_TransferFundsSteps extends Parent {
 
     US606_Content us6 = new US606_Content();
     int sayi=5;
@@ -26,6 +26,7 @@ public class TransferFundsSteps extends Parent {
         wait(1);
         List<WebElement> elements = GWD.getDriver().findElements(By.cssSelector("tr[ng-repeat=\"transaction in transactions\"]:nth-child(1) td"));
         verifyContainsText(elements.get(1), "Funds Transfer Sent");
+
         verifyContainsText(elements.get(2), "$");
     }
     @And("User enters transaction amount")
@@ -42,10 +43,19 @@ public class TransferFundsSteps extends Parent {
     }
 
     @Then("Click on the Element in Dialog")
-    public void clickOnTheElementInDialog() {
-        myClick(us6.transferFunds);
-        myClick(us6.transferBtn);
-        myClick(us6.accountsOverview);
-        myClick(us6.accountNum);
+    public void clickOnTheElementInDialog(DataTable dt) {
+       List<String> links=dt.asList(String.class);
+
+        for (int i = 0; i <links.size() ; i++) {
+            wait(2);
+            WebElement buton=us6.getWebElement(links.get(i));
+            wait(2);
+            us6.myClick(buton);
+
+        }
+
+        }
+
+
     }
-}
+

@@ -7,7 +7,7 @@ import Utilities.GWD;
 
 import java.util.List;
 
-public class US606_Content {
+public class US606_Content extends Parent {
 
     public WebElement accountNum;
 
@@ -24,7 +24,7 @@ public class US606_Content {
     @FindBy(css = "input[type=\"submit\"]")
     public WebElement loginBtn;
 
-    @FindBy(linkText = "//a[text()='Transfer Funds']")
+    @FindBy(xpath= "//a[text()='Transfer Funds']")
     public WebElement transferFunds;
 
     @FindBy(css = "tr > td > a")
